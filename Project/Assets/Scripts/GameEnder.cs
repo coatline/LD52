@@ -35,9 +35,13 @@ public class GameEnder : Singleton<GameEnder>
     private void Start()
     {
         EnemySpawner.I.EnemyKilled += KilledEnemy;
-        PlayerPrefs.SetFloat("Survived", 0);
-        PlayerPrefs.SetInt("Harvested", 0);
-        PlayerPrefs.SetInt("Killed", 0);
+
+        if (PlayerPrefs.HasKey("Survived") == false)
+            PlayerPrefs.SetFloat("Survived", 0);
+        if (PlayerPrefs.HasKey("Harvested") == false)
+            PlayerPrefs.SetInt("Harvested", 0);
+        if (PlayerPrefs.HasKey("Killed") == false)
+            PlayerPrefs.SetInt("Killed", 0);
     }
 
     public void Lose()
@@ -76,12 +80,14 @@ public class GameEnder : Singleton<GameEnder>
             PlayerPrefs.SetFloat("Survived", timeSurvived);
             timeSurvivedText.text += "<color=yellow>!</color>";
         }
-        else if(timeSurvived == timeSurvivedHighscore)
+        else if (timeSurvived == timeSurvivedHighscore)
             timeSurvivedText.text += "<color=lightblue>-</color>";
 
         beetsHarvestedText.text += $"\nHigh: <color=lightblue>{harvestHighscore}</color>";
         enemiesKilledText.text += $"\nHigh: <color=lightblue>{killsHighscore}</color>";
         timeSurvivedText.text += $"\nHigh: <color=lightblue>{timeSurvivedHighscore.ToString("N3")}</color>";
+
+        PlayerPrefs.Save();
 
         Lost = true;
         EnemySpawner.I.KillAllEnemies();

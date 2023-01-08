@@ -5189,7 +5189,7 @@ PrefabInstance:
     - target: {fileID: 6421679058486672279, guid: affcaff4783b9f84db781520b9a8ab5f,
         type: 3}
       propertyPath: emitCount
-      value: 60
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6421679058486672279, guid: affcaff4783b9f84db781520b9a8ab5f,
         type: 3}

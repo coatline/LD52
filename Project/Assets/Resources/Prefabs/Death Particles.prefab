@@ -4862,7 +4862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 586266856387612326}
   useParticleLifetime: 1
-  emitCount: 35
+  emitCount: 25
   audioSource: {fileID: 2754104843312369770}
   deathSound: {fileID: 11400000, guid: 50fb42856f6e10948960a67e7c7d5129, type: 2}
   parentRenderer: {fileID: 0}
