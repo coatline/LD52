@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
-    [SerializeField] Enemy enemyPrefab;
+    public event System.Action EnemyKilled;
+
     [SerializeField] float interval;
     List<Enemy> enemies;
+
+    //private void OnDestroy()
+    //{
+    //    print("Huh");
+    //}
 
     private void Start()
     {
@@ -16,6 +22,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     IEnumerator Spawn()
     {
+        if (GameEnder.I.Lost) yield break;
+
         Vector3 position = transform.GetChild(Random.Range(0, transform.childCount)).position;
 
         Enemy e = Instantiate(DataLibrary.I.Enemies.Rand, position, Quaternion.identity);
@@ -27,7 +35,20 @@ public class EnemySpawner : Singleton<EnemySpawner>
         StartCoroutine(Spawn());
     }
 
-    void EnemyDied(Enemy e) => enemies.Remove(e);
+    void EnemyDied(Enemy e)
+    {
+        enemies.Remove(e);
+        EnemyKilled?.Invoke();
+    }
+
+    public void KillAllEnemies()
+    {
+        foreach (Enemy e in FindObjectsOfType<Enemy>())
+            e.TakeDamage(float.MaxValue);
+
+        // Why doesn't this work?
+        //for (int i = 0; i < enemies.Count; i++)
+    }
 
     public Enemy GetClosestEnemy(Vector3 position)
     {

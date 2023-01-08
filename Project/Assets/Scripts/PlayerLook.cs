@@ -24,7 +24,7 @@ public class PlayerLook : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
 
             cam.transform.localRotation = Quaternion.AngleAxis(-currentLookingPosition.y, Vector3.right);
-            transform.localRotation = Quaternion.AngleAxis(currentLookingPosition.x, transform.up);
+            transform.localRotation = Quaternion.AngleAxis(currentLookingPosition.x, Vector3.up);
             return;
         }
 
@@ -43,6 +43,6 @@ public class PlayerLook : MonoBehaviour
         currentLookingPosition += smoothedVelocity;
 
         cam.transform.localRotation = Quaternion.AngleAxis(-currentLookingPosition.y, Vector3.right);
-        transform.localRotation = Quaternion.AngleAxis(currentLookingPosition.x, transform.up);
+        transform.localRotation = Quaternion.AngleAxis(currentLookingPosition.x, Vector3.up);
     }
 }

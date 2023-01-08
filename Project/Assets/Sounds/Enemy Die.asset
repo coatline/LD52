@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf68dd5e2c8e4114884686f6aee6c8fa, type: 3}
+  m_Name: Enemy Die
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 2233bd49e2ffa0d4d93686c65fa0dc89, type: 3}
+  - {fileID: 8300000, guid: c7ba7da0395cd2448a8cef0a6eea51a8, type: 3}
+  - {fileID: 8300000, guid: e0770c053a20b3742a1e7db0ca00fc62, type: 3}
+  - {fileID: 8300000, guid: 6a6e64aa8c494964e804537d4e84fd0e, type: 3}

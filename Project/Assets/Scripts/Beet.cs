@@ -5,7 +5,10 @@ using UnityEngine;
 public class Beet : MonoBehaviour
 {
     [SerializeField] DieWithParticles dieWithParticles;
+    [SerializeField] ParticleSystem dirtParticles;
     [SerializeField] float lateralPopoutRange;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound beetPopSound;
     [SerializeField] MeshCollider col;
     [SerializeField] float tiltRange;
     [SerializeField] float speed;
@@ -24,7 +27,7 @@ public class Beet : MonoBehaviour
     {
         if (popping)
         {
-            velocity.y -= .35f;
+            velocity.y -= .45f;
             velocity.x = Mathf.Lerp(velocity.x, 0, Time.deltaTime * 2f);
 
             if (velocity.y < -1f)
@@ -65,6 +68,7 @@ public class Beet : MonoBehaviour
 
         //target = EnemySpawner.I.GetClosestEnemy(transform.position);
         target = EnemySpawner.I.GetRandomEnemy();
+        //target = null;
 
         if (target == null)
         {
@@ -80,15 +84,14 @@ public class Beet : MonoBehaviour
 
         shooting = true;
         col.enabled = true;
-
-
-        //velocity.y = ((target.transform.position.y / time) - (transform.position.y / time) - (target.transform.position.x / time) + (gravity) + (transform.position.x * (xSpeed)));
     }
 
     public void Fire()
     {
+        dirtParticles.Emit(3);
+        audioSource.PlayOneShot(beetPopSound.RandomSound);
         popping = true;
-        velocity.y = 12.5f + Random.Range(-.5f, .5f);
+        velocity.y = 10f + Random.Range(-.5f, .5f);
         velocity.x = Random.Range(-lateralPopoutRange, lateralPopoutRange);
         rotVelocity = new Vector3(Random.Range(-1, 1f), Random.Range(-1, 1f), Random.Range(-1, 1f)) * 15;
     }

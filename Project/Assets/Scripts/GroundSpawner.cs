@@ -9,9 +9,13 @@ public class GroundSpawner : MonoBehaviour
     [SerializeField] bool generate;
     [SerializeField] bool delete;
     [SerializeField] int size;
+    [SerializeField] bool f;
 
     private void OnValidate()
     {
+        //if (f)
+        //    print(EnemySpawner.I);
+
         if (delete)
         {
             for (int i = transform.childCount - 1; i >= 0; i--)

@@ -8,6 +8,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] DieWithParticles dieWithParticles;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound growlSound;
+
+    [Header("Other")]
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Vector2 jumpRange;
     [SerializeField] Rigidbody rb;
@@ -67,9 +72,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
 
         if (health < 0)
-        {
             Die();
-        }
     }
 
     void Die()

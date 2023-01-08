@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class DieWithParticles : MonoBehaviour
 {
+    [Header("Particles")]
     [SerializeField] ParticleSystem particleSystem;
-    [SerializeField] MeshRenderer parentRenderer;
     [SerializeField] bool useParticleLifetime;
-    [SerializeField] float destroyDelay;
     [SerializeField] int emitCount;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound deathSound;
+
+    [Header("Other")]
+    [SerializeField] MeshRenderer parentRenderer;
+    [SerializeField] float destroyDelay;
     Color particleColor;
 
     private void Start()
@@ -27,7 +34,8 @@ public class DieWithParticles : MonoBehaviour
 
         ParticleSystem.MainModule settings = particleSystem.main;
         settings.startColor = new ParticleSystem.MinMaxGradient(particleColor);
-
+        audioSource.PlayOneShot(deathSound.RandomSound);
+            
         particleSystem.Emit(emitCount);
         StartCoroutine(DestroyTimer());
     }

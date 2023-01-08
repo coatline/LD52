@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf68dd5e2c8e4114884686f6aee6c8fa, type: 3}
+  m_Name: Beet Die
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 5d2019901d6706d4894fd310cc396f94, type: 3}
+  - {fileID: 8300000, guid: 841f4df39dd032e4bb4fde7385d16bb2, type: 3}
+  - {fileID: 8300000, guid: 57c74475b6d384241bd2ab2f56ee9378, type: 3}
+  - {fileID: 8300000, guid: e3520d6c6c2b27b4db16a8ab76ea038e, type: 3}
+  - {fileID: 8300000, guid: d5d2c4ca1b28b9e498f947f6c608a8bd, type: 3}

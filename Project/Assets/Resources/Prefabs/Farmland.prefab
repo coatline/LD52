@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8111761073444036246}
   - component: {fileID: 5778594051546945567}
   - component: {fileID: 670439477787607862}
-  - component: {fileID: 8720274923218479112}
   - component: {fileID: 8543154764673081775}
+  - component: {fileID: 2577507812596365957}
   m_Layer: 7
   m_Name: Farmland
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5778594051546945567
 MeshFilter:
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8720274923218479112
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974782319525883949}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1453043773871479701, guid: 02fee8157e22f1b47a36fdd4ff7b2e88, type: 3}
 --- !u!114 &8543154764673081775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,5 +100,27 @@ MonoBehaviour:
   reloadInterval: 7
   turnipPrefab: {fileID: 48278968994519959, guid: a5faaf3b80796b34c87c2a2a9f85782e,
     type: 3}
+  trigger: {fileID: 2577507812596365957}
   randomRot: 10
   randomTilt: 2
+--- !u!65 &2577507812596365957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974782319525883949}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.096214406, z: 1}
+  m_Center: {x: -0.0011972338, y: -0.0067103133, z: 0.011360094}
