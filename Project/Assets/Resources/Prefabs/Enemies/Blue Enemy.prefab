@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dieWithParticles: {fileID: 6137901971780256622}
+  audioSource: {fileID: 0}
+  growlSound: {fileID: 0}
   meshRenderer: {fileID: 6872013657336527402}
   jumpRange: {x: 0, y: 1}
   rb: {fileID: 1018707401}

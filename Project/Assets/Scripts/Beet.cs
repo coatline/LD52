@@ -5,12 +5,11 @@ using UnityEngine;
 public class Beet : MonoBehaviour
 {
     [SerializeField] DieWithParticles dieWithParticles;
-    [SerializeField] ParticleSystem dirtParticles;
     [SerializeField] float lateralPopoutRange;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Sound beetPopSound;
-    [SerializeField] MeshCollider col;
     [SerializeField] float tiltRange;
+    [SerializeField] Collider col;
     [SerializeField] float speed;
     Vector3 rotVelocity;
     Vector3 velocity;
@@ -66,19 +65,21 @@ public class Beet : MonoBehaviour
     {
         yield return new WaitForSeconds(.4f);
 
-        //target = EnemySpawner.I.GetClosestEnemy(transform.position);
-        target = EnemySpawner.I.GetRandomEnemy();
+        if (Random.Range(0, 2) == 0)
+            target = EnemySpawner.I.GetClosestEnemy(transform.position);
+        else
+            target = EnemySpawner.I.GetRandomEnemy();
         //target = null;
 
         if (target == null)
         {
             Die();
-            yield return null;
+            yield break;
         }
         else
         {
             Vector3 randomFactor = new Vector3(Random.Range(-.5f, -.5f), Random.Range(-.5f, -.5f), Random.Range(-.5f, -.5f));
-            Vector3 predictedPos = ((speed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position) * target.Velocity) + target.transform.position + randomFactor;
+            Vector3 predictedPos = ((speed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position) * (target.Velocity * Time.fixedDeltaTime)) + target.transform.position + randomFactor;
             velocity = (predictedPos - transform.position).normalized * speed;
         }
 
@@ -88,10 +89,9 @@ public class Beet : MonoBehaviour
 
     public void Fire()
     {
-        dirtParticles.Emit(3);
         audioSource.PlayOneShot(beetPopSound.RandomSound);
         popping = true;
-        velocity.y = 10f + Random.Range(-.5f, .5f);
+        velocity.y = 11f + Random.Range(-.5f, .5f);
         velocity.x = Random.Range(-lateralPopoutRange, lateralPopoutRange);
         rotVelocity = new Vector3(Random.Range(-1, 1f), Random.Range(-1, 1f), Random.Range(-1, 1f)) * 15;
     }

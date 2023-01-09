@@ -6,12 +6,13 @@ public class Farmland : MonoBehaviour
 {
     public System.Action BeetHarvested;
 
+    [SerializeField] ParticleSystem dirtParticles;
     [SerializeField] float reloadInterval;
     [SerializeField] Beet turnipPrefab;
     [SerializeField] Collider trigger;
     [SerializeField] float randomRot;
     [SerializeField] float randomTilt;
-    Beet turnip;
+    Beet beet;
     float timer;
 
     void Start()
@@ -33,15 +34,17 @@ public class Farmland : MonoBehaviour
 
         float percentage = Mathf.Min(timer / reloadInterval, 1);
 
-        turnip.transform.localScale = Vector3.one * percentage;
+        if (beet)
+            beet.transform.localScale = Vector3.one * percentage;
     }
 
     void Fire()
     {
         trigger.enabled = false;
 
+        dirtParticles.Emit(3);
         BeetHarvested?.Invoke();
-        turnip.Fire();
+        beet.Fire();
         StartReload();
 
         timer = 0;
@@ -49,7 +52,7 @@ public class Farmland : MonoBehaviour
 
     void StartReload()
     {
-        turnip = Instantiate(turnipPrefab, transform.position, Quaternion.Euler(180, Random.Range(0, 360f), 0));
+        beet = Instantiate(turnipPrefab, transform.position, Quaternion.Euler(180, Random.Range(0, 360f), 0));
     }
 
     private void OnTriggerStay(Collider other)

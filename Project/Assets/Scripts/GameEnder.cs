@@ -83,9 +83,9 @@ public class GameEnder : Singleton<GameEnder>
         else if (timeSurvived == timeSurvivedHighscore)
             timeSurvivedText.text += "<color=lightblue>-</color>";
 
-        beetsHarvestedText.text += $"\nHigh: <color=lightblue>{harvestHighscore}</color>";
-        enemiesKilledText.text += $"\nHigh: <color=lightblue>{killsHighscore}</color>";
-        timeSurvivedText.text += $"\nHigh: <color=lightblue>{timeSurvivedHighscore.ToString("N3")}</color>";
+        beetsHarvestedText.text += $"\nHigh: <color=yellow>{harvestHighscore}</color>";
+        enemiesKilledText.text += $"\nHigh: <color=yellow>{killsHighscore}</color>";
+        timeSurvivedText.text += $"\nHigh: <color=yellow>{timeSurvivedHighscore.ToString("N3")}</color>";
 
         PlayerPrefs.Save();
 
